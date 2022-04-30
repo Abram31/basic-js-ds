@@ -22,16 +22,81 @@ const { NotImplementedError } = require('../extensions/index.js');
  *   }
  * }
  */
-function removeKFromList(/*l, k*/) {
-  throw new NotImplementedError('Not implemented');
+// function removeKFromList(l, k) {
+//   let current = l; //  
+//   if (!current) { return; }
+
+//   while (current.next) { //пока есть узлы ???? как это записать для прохода по всем листам???
+
+//     if (current.value === k) {  //if текущий равен искомому
+//       //переносим ссылку
+
+//       current.value = current.next.value; // перезаписываем значание в листе
+//       current.next = current.next.next //здесь перекидываем ссылку
+//     }
+//     current = current.next; // если не равен =>переходим к следующему
+
+
+//   }
+
+//   return l;
+// }
+
+function removeKFromList(l, k) {
+  const list = l
+  debugger
+  // return list
+  recursive(list)
+  function recursive (obj) {
+    for (key in obj) {
+      if (obj[key] == k) {
+        obj[key] = obj.next
+        recursive(obj)
+      } if (obj[key].next instanceof Object) {
+        recursive(obj[key].next)
+      }
+      if (obj[key] == null ) {
+        return list
+      }
+    }
+  }
+  
+  return list
+
+  // let newArr = [...list.value]
+  // let result = []
+  // newArr.forEach(item =>{
+  //   if (item != k) {
+  //     result.push(item)
+  //   }
+  // } 
+  // )
+    
+  // return result
 }
 
-// function removeKFromList(l, k) {
-//   console.log(l);
-//   let newArr = [...l]
-//   let result = newArr.filter(item => item != k)
-//   return result
+
+// ----------------------------for debugger -------------------------------------------
+// class ListNode {
+//   constructor(x) {
+//     this.value = x;
+//     this.next = null;
+//   }
 // }
+// const l = new ListNode(1)
+
+// l.next = new ListNode(2)
+
+// l.next.next = new ListNode(3)
+
+// l.next.next.next = new ListNode(3)
+
+// l.next.next.next.next = new ListNode(4)
+
+// l.next.next.next.next.next = new ListNode(5)
+
+
+
 
 module.exports = {
   removeKFromList
