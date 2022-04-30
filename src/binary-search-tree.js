@@ -12,7 +12,6 @@ class BinarySearchTree {
   root() {
     debugger
     if (this.data.length > 0) {
-      // let copydata = Object.assign(this.data)
       let copydata = JSON.parse(JSON.stringify(this));
       copydata.data = copydata.data[0]
       return copydata
